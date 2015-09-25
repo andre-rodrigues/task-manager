@@ -1,6 +1,6 @@
 require "rails_helper"
 
-Rspec.describe TaskParser do
+RSpec.describe TaskParser do
 
   describe ".parse" do
     let(:valid_task_input) { "Estudar tecnologias 30 minutos" }
@@ -20,11 +20,11 @@ Rspec.describe TaskParser do
     end
 
     it "identifies the duration" do
-      expect(subject.duration).to eq 10.minutes
+      expect(subject.duration).to eq 30.minutes.to_f
     end
 
     it "sets the start time to the first available period of the day" do
-      expect(subject.start_at).to eq persisted_task.end_at
+      expect(subject.start_at.to_i).to eq persisted_task.end_at.to_i
     end
 
     context "when time is given" do
