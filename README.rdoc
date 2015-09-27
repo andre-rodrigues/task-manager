@@ -1,28 +1,11 @@
-== README
+== TaskManager
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Reads inputs like "Estudar tecnologias 30 minutos" and creates task acording to its description and duration described.
 
-Things you may want to cover:
+* Ruby version: 2.2.0
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
+* Database: Mysql
 
 * How to run the test suite
+  * rspec spec/
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
