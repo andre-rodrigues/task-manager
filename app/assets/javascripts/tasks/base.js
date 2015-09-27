@@ -20,12 +20,14 @@ $(function() {
   // Submit form asynchronously and add new item to task's list in case of success
   $(".new-task-form").on("submit", function(e) {
     e.preventDefault();
-    var stringInput = $(this).find("[name='string_input']").val();
+    var stringInput = $(this).find("[name='string_input']");
 
-    TasksService.createTask(stringInput).done(function(task) {
+    TasksService.createTask(stringInput.val()).done(function(task) {
       tasksList.addTask(task);
       tasksList.render();
     });
+
+    stringInput.val("");
   })
 
 });
