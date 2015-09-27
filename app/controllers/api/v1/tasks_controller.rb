@@ -1,19 +1,21 @@
 class Api::V1::TasksController < ApplicationController
+  layout :false
 
   def index
-    respond_with Task.all
+    @tasks = Task.all
   end
 
   def show
-    respond_with Task.find(params[:id])
+    @task = Task.find(params[:id])
   end
 
   def create
-    respond_with :api, :v1, TaskParser.parse(string_input).tap(&:save)
+    @task = TaskParser.parse(string_input)
+    head :bad_request unless @task.save
   end
 
   def destroy
-    respond_with Task.find(params[:id]).destroy
+    head Task.find(params[:id]).destroy ? :ok : :bad_request
   end
 
   private

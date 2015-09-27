@@ -1,7 +1,22 @@
-%ul.tasks-list.well
-  - @tasks.each do |task|
-    .task
-      .description= task.description
-      .start-at= task.start_at
-      .end-at= task.end_at
-      .duration= task.duration
+.container
+  .row
+    %h1.col-xs-8 Tarefas
+    = form_for :task, url: api_v1_tasks_path(format: :json), html: { class: "col-xs-4 new-task-form form-inline" } do |f|
+      = text_field_tag :string_input, nil, placeholder: "Nova tarefa", class: "form-control"
+      = submit_tag "Criar nova tarefa", class: "btn btn-default"
+  %ul.tasks-list
+    %li.task.well.blueprint
+      %span
+      %h3.description
+      .start-at
+        %label Inicio:
+        %span.value
+      .end-at
+        %label Término:
+        %span.value
+      .duration
+        %label Duração:
+        %span.value
+
+    %li.loading
+      = image_tag "loading.gif"
